@@ -107,14 +107,14 @@ export default {
 	/*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/axios',
-  ],
-  axios: {
-    baseURL: 'https://foxnfox.ch/',
-    proxyHeaders: false,
-    credentials: false
-  },
+	modules: [ '@nuxtjs/axios', '@nuxtjs/proxy' ],
+	axios: {
+		baseURL: 'https://foxnfox.ch/',
+		proxy: true
+	},
+	proxy: {
+		'/api/': { target: 'https://foxnfox.ch/listcars/page/', pathRewrite: { '^/api/': '' }, changeOrigin: true }
+	},
 	/*
   ** Build configuration
   */
