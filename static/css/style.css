@@ -6392,7 +6392,8 @@ footer:before {
 .pagination {
   padding-left: 0;
   border-radius: 4px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 
 .pagination li {

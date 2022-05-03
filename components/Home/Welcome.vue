@@ -1142,7 +1142,7 @@
             </div>
           </div>
           <!-- Page navigation start -->
-          <div class="pagination-box p-box-2 text-center pagination-lar">
+          <!-- <div class="pagination-box p-box-2 text-center pagination-lar">
             <nav aria-label="Page navigation example">
               <ul class="pagination">
                 <li class="page-item">
@@ -1162,6 +1162,16 @@
                 </li>
               </ul>
             </nav>
+          </div> -->
+
+          <div>
+            <p>Current page: {{ currentPage }}</p>
+            <v-pagination
+              v-model="currentPage"
+              :page-count="totalPages"
+              :classes="bootstrapPaginationClasses"
+              :labels="paginationAnchorTexts"
+            ></v-pagination>
           </div>
         </div>
         <div class="col-lg-4 col-md-12">
@@ -1422,10 +1432,48 @@
 </template>
 
 <script>
+import vPagination from "vue-plain-pagination";
 export default {
   name: "Welcome",
+  components: { vPagination },
+
+  data() {
+    return {
+      currentPage: 1,
+      totalPages: 30,
+      bootstrapPaginationClasses: {
+        ul: "pagination",
+        li: "page-item",
+        liActive: "active",
+        liDisable: "disabled",
+        button: "page-link",
+      },
+      paginationAnchorTexts: {
+        first: "First",
+        prev: "Previous",
+        next: "Next",
+        last: "Last",
+      },
+    };
+  },
+  computed: {
+    lists() {
+      const items = this.data;
+      // Return just page of items needed
+      return items.slice(
+        (this.currentPage - 1) * this.perPage,
+        this.currentPage * this.perPage
+      );
+    },
+    totalRows() {
+      return this.data.length;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.myList {
+  padding: 20px;
+}
 </style>
