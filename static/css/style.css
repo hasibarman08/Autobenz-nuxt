@@ -3027,6 +3027,7 @@ input[type=checkbox]:checked+label:before {
   position: relative;
   display: block;
   overflow: hidden;
+  height: 200px;
 }
 
 /** Car box 4 **/

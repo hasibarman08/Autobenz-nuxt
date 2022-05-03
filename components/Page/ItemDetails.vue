@@ -854,10 +854,14 @@
 <script>
 import Slick from "vue-slick";
 import "slick-carousel/slick/slick.css";
+import {mapGetters} from "vuex";
 
 export default {
   name: "ItemDetails",
   components: { Slick },
+  computed:{
+    ...mapGetters(['cars', 'pagination']),
+  },
   data() {
     return {
       slickOptions: {

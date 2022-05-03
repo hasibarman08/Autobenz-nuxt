@@ -27,7 +27,7 @@
                         role="tab"
                         aria-controls="home"
                         aria-selected="true"
-                        >Cars</a
+                      >Cars</a
                       >
                     </li>
                     <li class="nav-item">
@@ -39,7 +39,7 @@
                         role="tab"
                         aria-controls="profile"
                         aria-selected="false"
-                        >Utility</a
+                      >Utility</a
                       >
                     </li>
                     <li class="nav-item">
@@ -51,7 +51,7 @@
                         role="tab"
                         aria-controls="contact"
                         aria-selected="false"
-                        >Bikes</a
+                      >Bikes</a
                       >
                     </li>
                   </ul>
@@ -60,21 +60,23 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6" v-for="(car,idx) in cars" :key="idx">
               <div class="car-box-3">
                 <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
+                  <nuxt-link :to="{name:'car-slug',params:{slug:car.car_id}}" class="car-img">
                     <div class="tag-2">
                       <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
+                        <del>CHF {{ car.car_old_price }}</del>
+                        <span></span>
                       </div>
                     </div>
                     <img
                       class="d-block w-100"
-                      src="img/car/car-5.png"
+                      v-if="car.media && car.media.length>0"
+                      :src="$imgUrl+car.media[0].file_name"
                       alt="car"
                     />
-                  </a>
+                  </nuxt-link>
                   <div class="carbox-overlap-wrapper">
                     <div class="overlap-box">
                       <div class="overlap-btns-area">
@@ -159,12 +161,12 @@
                 <div class="car-des-text_body">
                   <div class="row">
                     <div class="col">
-                      <a href="/item-details">
-                        <h4>VW, GOLF 6</h4>
-                      </a>
+                      <nuxt-link :to="{name:'car-slug',params:{slug:car.car_id}}">
+                        <h6>{{ car.car_title }}</h6>
+                      </nuxt-link>
                     </div>
                     <div class="col">
-                      <div class="price pull-right pull-right">CHF 99'500</div>
+                      <div class="price pull-right pull-right">CHF {{ car.car_price }}</div>
                     </div>
                   </div>
                   <!-- <div class="location">
@@ -173,969 +175,9 @@
                                     </a>
                                 </div> -->
                   <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-1.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>VW, GOLF 6</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-4.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>VW, GOLF 6</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-3.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>VW, GOLF 6</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-6.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>VW, GOLF 6</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-2.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>Audi A4</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-2.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>Audi A4</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-2.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>Audi A4</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="car-box-3">
-                <div class="car-thumbnail">
-                  <a href="/item-details" class="car-img">
-                    <div class="tag-2">
-                      <div class="del-price">
-                        <del>CHF 100'000</del><span></span>
-                      </div>
-                    </div>
-                    <img
-                      class="d-block w-100"
-                      src="img/car/car-2.png"
-                      alt="car"
-                    />
-                  </a>
-                  <div class="carbox-overlap-wrapper">
-                    <div class="overlap-box">
-                      <div class="overlap-btns-area">
-                        <a class="overlap-btn compare-btn">
-                          <i class="fa fa-share"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-heart-o"></i>
-                        </a>
-                        <a class="overlap-btn wishlist-btn">
-                          <i class="fa fa-print"></i>
-                        </a>
-                        <a
-                          class="overlap-btn"
-                          data-bs-toggle="modal"
-                          data-bs-target="#"
-                        >
-                          <i class="fa fa-eye"><span>16</span></i>
-                        </a>
-                        <div class="car-magnify-gallery">
-                          <a
-                            href="img/car/car-5.png"
-                            class="overlap-btn"
-                            data-sub-html="<h4>Hyundai Santa</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <i class="fa fa-expand"></i>
-                            <img
-                              class="hidden"
-                              src="img/car/car-5.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-2.png"
-                            class="hidden"
-                            data-sub-html="<h4>2020 Ford Mustang</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-2.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-3.png"
-                            class="hidden"
-                            data-sub-html="<h4>Lexus GS F</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-3.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-4.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius specs</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-4.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                          <a
-                            href="img/car/car-1.png"
-                            class="hidden"
-                            data-sub-html="<h4>Toyota Prius</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy....</p>"
-                          >
-                            <img
-                              class="hidden"
-                              src="img/car/car-1.png"
-                              alt="hidden-img"
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="car-des-text_body">
-                  <div class="row">
-                    <div class="col">
-                      <a href="/item-details">
-                        <h4>Audi A4</h4>
-                      </a>
-                    </div>
-                    <div class="col">
-                      <div class="price pull-right">CHF 99'500</div>
-                    </div>
-                  </div>
-                  <!-- <div class="location">
-                                    <a href="/item-details">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
-                                    </a>
-                                </div> -->
-                  <ul class="facilities-list clearfix">
-                    <li><i class="flaticon-way"></i> 84,000</li>
-                    <li><i class="flaticon-manual-transmission"></i> Manual</li>
-                    <li><i class="flaticon-fuel"></i> Petrol</li>
+                    <li><i class="flaticon-way"></i> {{ car.car_milage }}</li>
+                    <li><i class="flaticon-manual-transmission"></i> {{ car.make_name }}</li>
+                    <li><i class="flaticon-fuel"></i> {{ car.fuel_type_name }}</li>
                   </ul>
                 </div>
               </div>
@@ -1164,11 +206,12 @@
             </nav>
           </div> -->
 
-          <div>
+          <div v-if="pagination">
             <p>Current page: {{ currentPage }}</p>
             <v-pagination
               v-model="currentPage"
-              :page-count="totalPages"
+              @change="pageChange"
+              :page-count="pagination.last_link?pagination.last_link:1"
               :classes="bootstrapPaginationClasses"
               :labels="paginationAnchorTexts"
             ></v-pagination>
@@ -1433,14 +476,16 @@
 
 <script>
 import vPagination from "vue-plain-pagination";
+import {mapGetters} from 'vuex'
+
 export default {
   name: "Welcome",
-  components: { vPagination },
+  components: {vPagination},
 
   data() {
     return {
       currentPage: 1,
-      totalPages: 30,
+      perPage: 8,
       bootstrapPaginationClasses: {
         ul: "pagination",
         li: "page-item",
@@ -1457,18 +502,16 @@ export default {
     };
   },
   computed: {
-    lists() {
-      const items = this.data;
-      // Return just page of items needed
-      return items.slice(
-        (this.currentPage - 1) * this.perPage,
-        this.currentPage * this.perPage
-      );
-    },
-    totalRows() {
-      return this.data.length;
-    },
+    ...mapGetters(['cars', 'pagination']),
   },
+  mounted() {
+    this.pageChange()
+  },
+  methods: {
+    async pageChange() {
+      await this.$store.dispatch('getCar', this.currentPage)
+    }
+  }
 };
 </script>
 

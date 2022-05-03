@@ -1,22 +1,18 @@
 export const state = () => ({
-	carList: {}
+	carList: [],
+  paginationData:{}
 });
 export const mutations = {
 	set_car(state, payload) {
-		state.carList = payload;
+		state.carList = payload.automobile;
+		state.paginationData = payload.config;
 	}
 };
 export const getters = {
-	cars: (state) => state.carList
+	cars: (state) => state.carList,
+	pagination: (state) => state.paginationData,
 };
 export const actions = {
-	async set_alert({ commit }, payload) {
-		commit('RESET_ALERT');
-		commit('SET_ALERT', payload);
-		setTimeout(() => {
-			commit('RESET_ALERT');
-		}, 3000);
-	},
 	async getCar({ commit }, page = '') {
 		try {
 			const res = await this.$axios.$get('/api/' + page, {
@@ -24,6 +20,7 @@ export const actions = {
 					'Access-Control-Allow-Origin': '*'
 				}
 			});
+      console.log(res);
 			commit('set_car', res);
 		} catch (e) {
 			console.log(e);
