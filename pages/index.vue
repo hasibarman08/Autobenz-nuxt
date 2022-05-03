@@ -57,6 +57,7 @@ export default {
       doSticky();
       placedDashboard();
     });
+    this.$store.dispatch('getCar')
     /*----------------------------
  Counter js active
 ------------------------------ */

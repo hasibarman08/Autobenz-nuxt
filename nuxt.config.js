@@ -107,7 +107,14 @@ export default {
 	/*
   ** Nuxt.js modules
   */
-	modules: [],
+  modules: [
+    '@nuxtjs/axios',
+  ],
+  axios: {
+    baseURL: 'https://foxnfox.ch/',
+    proxyHeaders: false,
+    credentials: false
+  },
 	/*
   ** Build configuration
   */
