@@ -28,7 +28,7 @@ export default {
   components: {},
   head() {
     return {
-      title: "Loading ..",
+      title: "Cars, Utilities, and Bikes | Autobenz",
     };
   },
   mounted() {

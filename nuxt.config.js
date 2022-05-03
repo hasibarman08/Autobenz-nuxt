@@ -11,7 +11,7 @@ export default {
 			{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
 		],
 		link: [
-			{ rel: 'shortcut icon', type: 'image/x-icon', href: 'img/logo/favicon.ico' },
+			{ rel: 'shortcut icon', type: 'image/x-icon', href: 'img/logo/logo-0.png' },
 			// External CSS libraries
 			{ rel: 'stylesheet', href: 'css/bootstrap.min.css' },
 			{ rel: 'stylesheet', href: 'css/animate.min.css' },
